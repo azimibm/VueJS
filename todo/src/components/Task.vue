@@ -1,9 +1,7 @@
 <template>
-<div @dblclick="$emit('toggle-completed', task.id)"
-class="task">
-    <!-- class="[task.completed ? 'task completed' : '', 'task']"> -->
+<div class="task">
+  <input class="checkbox" type="checkbox" v-model="completed" name="completed" @change="check($event)"/>
   <h3>{{ task.text}}
-    <i class="fas fa-edit" @click="onEdit(task.id)"></i>
     <i class="fas fa-times" @click="onDelete(task.id)"></i>
   </h3>
 </div>
@@ -19,11 +17,6 @@ export default {
   methods: {
     onDelete(id) {
       console.log(id)
-      this.$emit('delete-task', id)
-    },
-    OnEdit(id) {
-      console.log(id)
-      this.$emit('edit-task', id)
     }
   }
 }
@@ -56,6 +49,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.checkbox {
+  /* display: inline-block; */
+  float: left;
+  margin-right: 10px;
 }
 </style>
 
