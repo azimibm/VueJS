@@ -1,16 +1,10 @@
 <template>
   <header>  
     <h1>{{ message }}</h1>
-    <Button 
-      @btn-click="$emit('toggle-add-task')"
-      :text="showAddTask ? 'close' : 'Add Task'"  
-      :color="showAddTask ? 'red' : 'green'"
-      />
   </header>
 </template>
 
 <script>
-import Button from './Button.vue'
 
 export default {
   name: 'Header',
@@ -18,11 +12,7 @@ export default {
     message: {
       type: String,
       default: 'TODO LIST'
-    },
-    showAddTask: Boolean
-  },
-  components: {
-    Button
+    }
   }
 }
 </script>
