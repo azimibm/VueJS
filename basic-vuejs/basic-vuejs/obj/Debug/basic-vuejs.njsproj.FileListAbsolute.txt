@@ -1,0 +1,3 @@
+C:\Users\sahar.azimi\source\repos\Vue\basic-vuejs\basic-vuejs\obj\Debug\basic-vuejs.njsproj.AssemblyReference.cache
+C:\Users\sahar.azimi\source\repos\Vue\basic-vuejs\basic-vuejs\obj\Debug\basic-vuejs.njsproj.CoreCompileInputs.cache
+C:\Users\sahar.azimi\source\repos\Vue\basic-vuejs\basic-vuejs\bin\Microsoft.NodejsTools.WebRole.dll
