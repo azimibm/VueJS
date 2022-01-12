@@ -1,19 +1,9 @@
 <template>
   <div id="app">
     <div class="container">
-      <Header 
-        @toggle-add-task="toggleAddTask" 
-        title="TODO List" 
-        :showAddTask="showAddTask"
-        />
-      <div v-if="showAddTask">
-        <AddTask @add-task="addTask"/>
-      </div>
-      <Tasks
-        @toggle-completed="toggleCompleted" 
-        @delete-task="deleteTask"
-        @edit-task="editTask"
-        :tasks="tasks"/>
+      <Header title="TODO List" />
+      <AddTask @add-task="addTask"/>
+      <Tasks :tasks="tasks"/>
     </div>
   </div>
 </template>
@@ -37,9 +27,6 @@ export default {
     }
   },
   methods: {
-    toggleAddTask() {
-      this.showAddTask = !this.showAddTask
-    },
     addTask(task) {
       this.tasks = [...this.tasks, task]
 
@@ -49,9 +36,6 @@ export default {
         console.log('task', id)
         this.tasks = this.tasks.filter((task) => task.id !== id)
       }
-    },
-    editTask(text) {
-      this.task.text = text
     },
     toggleCompleted(id) {
       console.log(id)

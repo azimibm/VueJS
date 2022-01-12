@@ -1,12 +1,7 @@
 <template>
 <div>
   <div v-for="task in tasks" :key="task.id">
-    <Task 
-      @toggle-completed="$emit('toggle-completed', task.id)" 
-      @delete-task="$emit('delete-task', task.id)"
-      @edit-task="$emit('edit-task', task.id)"
-      :task="task"
-      :style="task.completed ? {'text-decoration': 'line-through', 'color': 'red'} : ''"></Task>
+    <Task :task="task"></Task>
   </div>
 </div>
 </template>
@@ -21,7 +16,6 @@ export default {
   },
   components: {
     Task
-  },
-  emits: ['delete-task', 'toggle-completed', 'edit-task']
+  }
 }
 </script>
