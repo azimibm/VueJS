@@ -10,7 +10,7 @@
 </template>
 
 <script>
-// import store from './../store/index'
+import store from './../store/index'
 
 export default {
   name: 'AddTask',
@@ -18,17 +18,17 @@ export default {
     return {
       taskTitle: ''
    }
+  },
+  methods: {
+    addTaskLocal() {
+      console.log('add task from actions')
+      const newTask = {id: Math.floor(Math.random() * 100),
+        text: this.taskTitle,
+        done: false}
+       store.dispatch('addTask', newTask) 
+      this.taskTitle =''
+    }
   }
-  // methods: {
-  //   addTaskLocal() {
-  //     console.log('add task from actions', store.actions)
-  //     const newTask = {id: Math.floor(Math.random() * 100),
-  //       text: this.taskTitle,
-  //       done: false}
-  //     store.actions.addTask(newTask),
-  //     this.taskTitle =''
-  //   }
-  // }
 }
 </script>
 

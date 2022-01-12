@@ -17,6 +17,11 @@ export default new Vuex.Store ({
         id: 2,
         text: 'Meeting with Sam',
         done: false
+      },
+      {
+        id: 3,
+        text: 'Delete the item',
+        done: false
       }
     ]
   }, 
@@ -44,11 +49,9 @@ export default new Vuex.Store ({
       Vue.set(state, 'tasks', copyoftasks)
       // state.tasks = [...state.tasks, task];
     },
-    deleteTask(state, id) {
+    deleteTask(state, index) {
       const copyoftasks = state.tasks.slice()
-      const taskId = copyoftasks.indexOf(id)
-      console.log(taskId)
-      copyoftasks.splice(taskId, 1)
+      copyoftasks.splice(index, 1)
       Vue.set(state, 'tasks', copyoftasks)
     },
     changeTaskStatus(state, task) {
@@ -57,7 +60,7 @@ export default new Vuex.Store ({
     }
   },
   // Actions are functions that dispatch mutations
-  actions: {  
+  actions: { 
     addTask({ commit }, task) {
       console.log('add task actions')
       commit('addTask', task);

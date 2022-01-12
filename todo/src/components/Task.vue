@@ -5,7 +5,8 @@
          :checked="task.done"
          @change="change(task)"/>
   <h3>{{ task.text}}
-    <i class="fas fa-trash" @click="deleteTask(task.id)"></i>
+    <i class="fas fa-trash" 
+    @click="deleteTask(task.id)"></i>
   </h3>
 </div>
 </template>
@@ -18,12 +19,14 @@ export default {
   name: 'Task',
   
   props: {
-    task: Object
+    task: Object,
+    index: Number
   },
   methods: {
-    // deleteTask(id) {
-    //   store.actions.deleteTask(id) // destructing the store
-    // },
+    deleteTask(id) {
+      console.log('local delete: id='+ id)
+      store.dispatch('deleteTask', this.index) 
+    },
     // based on the state of the check box
     // it should change the done/undone field of the task in the tasks array
     change(task) {  
