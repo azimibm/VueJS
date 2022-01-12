@@ -8,14 +8,17 @@
 
 <script>
 import Task from './Task'
+import store from '../store/index'
 
 export default {
   name: 'Tasks',
-  props: {
-    tasks: Array
-  },
   components: {
     Task
+  },
+  computed: {
+    tasks () {
+      return store.getters.allTasks
+    }
   }
 }
 </script>
