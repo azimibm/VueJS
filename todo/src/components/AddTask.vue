@@ -1,18 +1,32 @@
 <template>
   <div class="form-control">
     <label>Task</label>
-    <input type="text" v-model="taskTitle" name="text" placeholder="Add a Task" @keyup.enter="saveTask"/>
+    <input type="text" 
+           v-model="taskTitle" 
+           name="text" 
+           placeholder="Add a Task" 
+           @keyup.enter="addTaskLocal"/>
   </div>
 </template>
 
 <script>
+import store from './../store/index'
 
 export default {
   name: 'AddTask',
   data() {
     return {
-      taskTitle: '',
-      completed: false
+      taskTitle: ''
+   }
+  },
+  methods: {
+    addTaskLocal() {
+      console.log('add task from actions')
+      const newTask = {id: Math.floor(Math.random() * 100),
+        text: this.taskTitle,
+        done: false}
+       store.dispatch('addTask', newTask) 
+      this.taskTitle =''
     }
   }
 }

@@ -1,22 +1,36 @@
 <template>
 <div class="task">
-  <input class="checkbox" type="checkbox" v-model="completed" name="completed" @change="check($event)"/>
+  <input class="checkbox" 
+         type="checkbox"
+         :checked="task.done"
+         @change="change(task)"/>
   <h3>{{ task.text}}
-    <i class="fas fa-times" @click="onDelete(task.id)"></i>
+    <i class="fas fa-trash" 
+    @click="deleteTask(task.id)"></i>
   </h3>
 </div>
 </template>
 
 <script>
+// importing only actions and getters from the store
+import store from '../store/index'
 
 export default {
   name: 'Task',
+  
   props: {
-    task: Object
+    task: Object,
+    index: Number
   },
   methods: {
-    onDelete(id) {
-      console.log(id)
+    deleteTask(id) {
+      console.log('local delete: id='+ id)
+      store.dispatch('deleteTask', this.index) 
+    },
+    // based on the state of the check box
+    // it should change the done/undone field of the task in the tasks array
+    change(task) {  
+      store.dispatch('changeTaskStatus', task)
     }
   }
 }
@@ -54,7 +68,8 @@ export default {
 .checkbox {
   /* display: inline-block; */
   float: left;
-  margin-right: 10px;
+  margin: 8px 10px 10px 0px;
+  color: red;
 }
 </style>
 
